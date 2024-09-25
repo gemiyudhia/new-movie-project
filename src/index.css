@@ -3,5 +3,9 @@
 @tailwind components;
 
 body {
-  @apply font-poppins;
+  @apply font-poppins bg-[#0f0e17];
+}
+
+.hamburger-line {
+  @apply w-[28px] h-[3px] bg-white rounded-xl;
 }
