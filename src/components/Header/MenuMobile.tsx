@@ -24,7 +24,7 @@ const navMenu = () => {
 const MenuMobile = ({ isOpen }: MenuMobileProps) => {
   return (
     <div
-      className={`absolute bg-secondary-0 w-[90%] md:w-[95%] top-24 py-4 px-3 rounded-lg transition-all duration-300 ease-in-out transform ${
+      className={`absolute bg-secondary-0 w-[90%] md:w-[95%] top-24 py-4 px-3 rounded-lg transition-all duration-300 ease-in-out transform lg:hidden ${
         isOpen
           ? "translate-y-0 opacity-100"
           : "-translate-y-10 opacity-0 pointer-events-none"

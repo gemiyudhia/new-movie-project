@@ -31,23 +31,40 @@ const Navbar = () => {
           <span className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 w-24 h-7 rounded-xl"></span>
         </div>
 
-        <ul className="hidden">
+        <ul className="hidden lg:flex items-center gap-x-5">
           {navMenu().map((item, index) => (
-            <li key={index}>{item.title}</li>
+            <li key={index}>
+              <a
+                href=""
+                className="hover:text-secondary-0 after:content-[''] after:block after:pb-2 after:border-b-2 after:border-secondary-0 after:scale-x-0 hover:after:scale-x-100 after:origin-center transition-transform duration-300"
+              >
+                {item.title}
+              </a>
+            </li>
           ))}
         </ul>
 
         {/* hamburger menu for mobile */}
-        <div>
-          <HamburgerMenu isOpen={isOpen} toggleMenu={() => setIsOpen(!isOpen)} />
+        <div className="lg:hidden">
+          <HamburgerMenu
+            isOpen={isOpen}
+            toggleMenu={() => setIsOpen(!isOpen)}
+          />
         </div>
 
         {/* Menu saat hamburger di klik */}
         <MenuMobile isOpen={isOpen} />
 
-        <form action="" className="hidden">
-          <MagnifyingGlass />
-          <input type="text" placeholder="Search Movie..." />
+        <form action="" className="hidden lg:flex lg:relative">
+          <MagnifyingGlass
+            size={18}
+            className="absolute top-2 left-2 text-white"
+          />
+          <input
+            type="text"
+            placeholder="Search Movie..."
+            className="w-full py-2 pl-10 bg-transparent border-b text-white outline-none"
+          />
         </form>
       </div>
     </nav>
