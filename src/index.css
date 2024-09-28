@@ -3,7 +3,7 @@
 @tailwind components;
 
 body {
-  @apply font-poppins bg-[#0f0e17];
+  @apply font-poppins bg-background-0;
 }
 
 .hamburger-line {
