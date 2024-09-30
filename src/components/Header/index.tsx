@@ -22,9 +22,20 @@ const navMenu = () => {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isScroll, setIsScroll] = useState<boolean>(false)
+
+    const scroll = () => {
+      if (window.scrollY >= 45) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", scroll)
 
   return (
-    <nav className="container mx-auto fixed z-20 top-0 left-0 right-0">
+    <nav className={`container mx-auto fixed z-20 top-0 left-0 right-0 ${isScroll ? "backdrop-blur-md" : ""}`}>
       <div className="flex justify-between items-center py-7 text-white px-6 relative">
         <div className="flex items-center gap-x-5">
           <h1 className="font-bold text-2xl">My Movies </h1>
