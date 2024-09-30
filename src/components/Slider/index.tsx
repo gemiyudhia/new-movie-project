@@ -41,7 +41,7 @@ const Slider = () => {
           loop={movies.length > 1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
-          style={{ height: "75vh" }}
+          style={{ height: "100vh" }}
           className="md:rounded-lg"
         >
           {movies.map((movie) => (

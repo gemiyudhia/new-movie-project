@@ -2,9 +2,9 @@ import Slider from "../components/Slider";
 
 const Home = () => {
   return (
-    <div>
+    <section className="lg:mt-32 mt-28">
       <Slider />
-    </div>
+    </section>
   );
 };
 
