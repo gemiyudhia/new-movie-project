@@ -2,20 +2,33 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 import { useState } from "react";
 import HamburgerMenu from "./HamburgerMenu";
 import MenuMobile from "./MenuMobile";
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 const navMenu = () => {
   return [
     {
       title: "Home",
-      link: "#",
+      link: "home",
+      submenu: [],
     },
     {
       title: "Movies",
       link: "#",
+      submenu: [
+        { name: "Popular Movies", link: "" },
+        { name: "New Releases", link: "" },
+        { name: "Top Rated", link: "" },
+      ],
     },
     {
       title: "Tv Series",
       link: "#",
+      submenu: [
+        { name: "Popular Series", link: "" },
+        { name: "New Series", link: "" },
+        { name: "Top Rated Series", link: "" },
+      ],
     },
   ];
 };
@@ -35,7 +48,11 @@ const Navbar = () => {
     window.addEventListener("scroll", scroll)
 
   return (
-    <nav className={`container mx-auto fixed z-20 top-0 left-0 right-0 ${isScroll ? "backdrop-blur-md" : ""}`}>
+    <nav
+      className={`container mx-auto fixed z-20 top-0 left-0 right-0 ${
+        isScroll ? "backdrop-blur-md" : ""
+      }`}
+    >
       <div className="flex justify-between items-center py-7 text-white px-6 relative">
         <div className="flex items-center gap-x-5">
           <h1 className="font-bold text-2xl">My Movies </h1>
@@ -43,16 +60,38 @@ const Navbar = () => {
         </div>
 
         <ul className="hidden lg:flex items-center gap-x-5">
-          {navMenu().map((item, index) => (
-            <li key={index}>
-              <a
-                href=""
-                className="hover:text-secondary-0 after:content-[''] after:block after:pb-2 after:border-b-2 after:border-secondary-0 after:scale-x-0 hover:after:scale-x-100 after:origin-center transition-transform duration-300"
-              >
-                {item.title}
-              </a>
-            </li>
-          ))}
+          {navMenu().map((item, index) =>
+            item.submenu.length > 0 ? (
+              <Popover key={index} className="relative">
+                <PopoverButton className="hover:text-secondary-0 after:content-[''] after:block after:pb-2 after:border-b-2 after:border-secondary-0 after:scale-x-0 hover:after:scale-x-100 after:origin-center transition-transform duration-300 focus:outline-none focus:after:scale-x-100 focus:text-secondary-0">
+                  {item.title}
+                </PopoverButton>
+                <PopoverPanel className="absolute z-10 bg-secondary-0 p-4 mt-2 shadow-lg rounded-md">
+                  <div className="flex flex-col w-36 gap-y-2">
+                    {item.submenu.map((subItem, subIndex) => (
+                      <a
+                        key={subIndex}
+                        href={subItem.link}
+                        className="hover:underline mb-1 text-sm"
+                      >
+                        {subItem.name}
+                      </a>
+                    ))}
+                  </div>
+                </PopoverPanel>
+              </Popover>
+            ) : (
+              // Jika tidak ada submenu, tampilkan item tanpa Popover
+              <li key={index}>
+                <Link
+                  to={`/${item.link}`}
+                  className="hover:text-secondary-0 after:content-[''] after:block after:pb-2 after:border-b-2 after:border-secondary-0 after:scale-x-0 hover:after:scale-x-100 after:origin-center transition-transform duration-300 focus:outline-none focus:after:scale-x-100 focus:text-secondary-0"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            )
+          )}
         </ul>
 
         {/* hamburger menu for mobile */}
