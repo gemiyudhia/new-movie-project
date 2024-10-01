@@ -7,8 +7,8 @@ import TvSeries from "./pages/TvSeries";
 function App() {
   return (
     <>
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
