@@ -18,13 +18,11 @@ const Slider = () => {
     fetchNowPlayingMovies();
   }, [fetchNowPlayingMovies]);
 
-  console.log("movies:", movies);
-
   return (
     <>
       <div className="container mx-auto">
         <div className="px-6 mt-8">
-          <h1 className="text-white font-bold text-3xl pb-5">Now Playing</h1>
+          <h1 className="text-white font-bold text-3xl pb-5">Now Playing 🎬</h1>
         </div>
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
@@ -39,23 +37,21 @@ const Slider = () => {
           spaceBetween={30}
           slidesPerView={1}
           loop={movies.length > 1}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-          style={{ height: "100vh" }}
-          className="md:rounded-lg"
+          onSlideChange={() => {}}
+          onSwiper={() => {}}
+          className="md:rounded-lg h-[86vh] md:h-[75vh]"
         >
           {movies.map((movie) => (
             <SwiperSlide key={movie.id} className="h-full md:rounded-lg">
               <img
                 src={
-                  movie.backdrop_path
-                    ? `${import.meta.env.VITE_REACT_BASE_IMAGE_URL}/${
-                        movie.backdrop_path
-                      }`
-                    : "path-to-your-fallback-image.jpg" // Fallback image in case of no backdrop_path
+                  movie.backdrop_path &&
+                  `${import.meta.env.VITE_REACT_BASE_IMAGE_URL}/${
+                    movie.backdrop_path
+                  }`
                 }
                 alt={movie.title}
-                className="w-full h-full object-cover md:rounded-lg"
+                className="w-full h-full object-cover md:rounded-lg brightness-50"
               />
             </SwiperSlide>
           ))}
