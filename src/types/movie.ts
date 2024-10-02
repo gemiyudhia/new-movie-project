@@ -2,8 +2,8 @@ export type Movie = {
   id: number;
   title: string;
   description: string;
-  releaseDate: string;
+  release_date: string;
   rating: number;
-  posterPath: string;
-  backdrop_path: string,
+  poster_path: string;
+  backdrop_path: string;
 };
