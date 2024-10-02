@@ -1,5 +1,5 @@
-import { useEffect, useCallback } from "react";
-import { movieStore } from "../../store/movieStore";
+import { useEffect } from "react";
+import {movieStore} from "../../store/index"
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -10,13 +10,9 @@ import "swiper/css/autoplay";
 const Slider = () => {
   const { movies, fetchMovie } = movieStore();
 
-  const fetchNowPlayingMovies = useCallback(() => {
-    fetchMovie("now_playing", 10);
-  }, [fetchMovie]);
-
   useEffect(() => {
-    fetchNowPlayingMovies();
-  }, [fetchNowPlayingMovies]);
+    fetchMovie("now_playing", 8);
+  }, [fetchMovie]);
 
   return (
     <>
