@@ -4,12 +4,12 @@ import axios from "axios";
 
 type movieState = {
   movies: Movie[];
-  fetchMovie: (endpoint: string, limit: number) => void;
+  fetchMovie: (endpoint: string, limit?: number) => void;
 };
 
 export const movieStore = create<movieState>((set) => ({
   movies: [],
-  fetchMovie: async (endpoint: string, limit: number | null) => {
+  fetchMovie: async (endpoint: string, limit: number | null = null) => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_REACT_BASE_URL}/movie/${endpoint}?api_key=${
@@ -29,4 +29,3 @@ export const movieStore = create<movieState>((set) => ({
     }
   },
 }));
-
