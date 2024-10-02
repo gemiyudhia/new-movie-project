@@ -16,18 +16,20 @@ const navMenu = () => {
       title: "Movies",
       link: "#",
       submenu: [
-        { name: "Popular Movies", link: "" },
-        { name: "New Releases", link: "" },
-        { name: "Top Rated", link: "" },
+        { name: "Now Playing", link: "/movies/now_playing" },
+        { name: "Popular Movies", link: "/movies/popular_movies" },
+        { name: "Upcoming Movies", link: "/movies/upcoming_movies" },
+        { name: "Top Rated Movies", link: "/movies/top_rated_movies" },
       ],
     },
     {
       title: "Tv Series",
       link: "#",
       submenu: [
-        { name: "Popular Series", link: "" },
-        { name: "New Series", link: "" },
-        { name: "Top Rated Series", link: "" },
+        { name: "Airing Today", link: "/tv/airing_today" },
+        { name: "On The Air", link: "/tv/on_the_air" },
+        { name: "Popular Series", link: "/tv/popular_series" },
+        { name: "Top Rated Series", link: "/tv/top_rated/series" },
       ],
     },
   ];
@@ -35,17 +37,17 @@ const navMenu = () => {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isScroll, setIsScroll] = useState<boolean>(false)
+  const [isScroll, setIsScroll] = useState<boolean>(false);
 
-    const scroll = () => {
-      if (window.scrollY >= 45) {
-        setIsScroll(true);
-      } else {
-        setIsScroll(false);
-      }
-    };
+  const scroll = () => {
+    if (window.scrollY >= 45) {
+      setIsScroll(true);
+    } else {
+      setIsScroll(false);
+    }
+  };
 
-    window.addEventListener("scroll", scroll)
+  window.addEventListener("scroll", scroll);
 
   return (
     <nav
@@ -58,7 +60,6 @@ const Navbar = () => {
           <h1 className="font-bold text-2xl">My Movies </h1>
           <span className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 w-24 h-7 rounded-xl"></span>
         </div>
-
         <ul className="hidden lg:flex items-center gap-x-5">
           {navMenu().map((item, index) =>
             item.submenu.length > 0 ? (
@@ -66,7 +67,7 @@ const Navbar = () => {
                 <PopoverButton className="hover:text-secondary-0 after:content-[''] after:block after:pb-2 after:border-b-2 after:border-secondary-0 after:scale-x-0 hover:after:scale-x-100 after:origin-center transition-transform duration-300 focus:outline-none focus:after:scale-x-100 focus:text-secondary-0">
                   {item.title}
                 </PopoverButton>
-                <PopoverPanel className="absolute z-10 bg-secondary-0 p-4 mt-2 shadow-lg rounded-md">
+                <PopoverPanel className="absolute z-10 bg-white text-slate-800 font-semibold p-4 mt-2 shadow-lg rounded-md">
                   <div className="flex flex-col w-36 gap-y-2">
                     {item.submenu.map((subItem, subIndex) => (
                       <a
@@ -122,5 +123,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

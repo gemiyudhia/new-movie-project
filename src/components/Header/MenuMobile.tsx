@@ -17,18 +17,20 @@ const navMenu = () => {
       title: "Movies",
       link: "#",
       submenu: [
-        { name: "Popular Movies", link: "" },
-        { name: "New Releases", link: "" },
-        { name: "Top Rated", link: "" },
+        { name: "Now Playing", link: "/movies/now_playing" },
+        { name: "Popular Movies", link: "/movies/popular_movies" },
+        { name: "Upcoming Movies", link: "/movies/upcoming_movies" },
+        { name: "Top Rated Movies", link: "/movies/top_rated_movies" },
       ],
     },
     {
       title: "Tv Series",
       link: "#",
       submenu: [
-        { name: "Popular Series", link: "" },
-        { name: "New Series", link: "" },
-        { name: "Top Rated Series", link: "" },
+        { name: "Airing Today", link: "/tv/airing_today" },
+        { name: "On The Air", link: "/tv/on_the_air" },
+        { name: "Popular Series", link: "/tv/popular_series" },
+        { name: "Top Rated Series", link: "/tv/top_rated/series" },
       ],
     },
   ];
@@ -62,7 +64,7 @@ const MenuMobile = ({ isOpen }: MenuMobileProps) => {
               <PopoverButton className="hover:underline after:content-[''] after:block after:pb-2 after:border-b-2 after:border-secondary-0 after:scale-x-0 hover:after:scale-x-100 after:origin-center transition-transform duration-300 focus:outline-none focus:after:scale-x-100 focus:underline">
                 {item.title}
               </PopoverButton>
-              <PopoverPanel className="absolute z-10 bg-secondary-0 p-4 mt-2 shadow-lg rounded-md">
+              <PopoverPanel className="absolute z-10 bg-white p-4 mt-2 shadow-lg rounded-md text-slate-800 font-semibold">
                 <div className="flex flex-col w-36 gap-y-2">
                   {item.submenu.map((subItem, subIndex) => (
                     <a
