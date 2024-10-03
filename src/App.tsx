@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/tv" element={<TvSeries />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );
