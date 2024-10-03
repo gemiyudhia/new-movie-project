@@ -65,7 +65,7 @@ const HomeSection = () => {
           Show More
         </Link>
       </div>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         {series.map((serie) => (
           <div key={serie.id}>
             <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
