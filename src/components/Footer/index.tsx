@@ -9,23 +9,27 @@ const Footer = () => {
           <Link
             to="https://instagram.com/yuudhia"
             target="blank"
-            className="bg-white p-2 rounded-full"
+            className=" group"
           >
-            <InstagramLogo size={28} weight="bold" />
+            <InstagramLogo
+              size={40}
+              weight="bold"
+              className="group-hover:-translate-y-1 group-hover:-translate-x-1 transition-transform duration-300 bg-white p-2 rounded-full"
+            />
           </Link>
           <Link
             to="https://github.com/gemiyudhia"
             target="blank"
-            className="bg-white p-2 rounded-full"
+            className="group"
           >
-            <GithubLogo size={28} weight="bold" />
+            <GithubLogo size={40} weight="bold" className="group-hover:-translate-y-1 group-hover:-translate-x-1 transition-transform duration-300 bg-white p-2 rounded-full" />
           </Link>
           <Link
             to="https://www.linkedin.com/in/gemiyudhia/"
             target="blank"
-            className="bg-white p-2 rounded-full"
+            className="group"
           >
-            <LinkedinLogo size={28} weight="bold" />
+            <LinkedinLogo size={40} weight="bold" className="group-hover:-translate-y-1 group-hover:-translate-x-1 transition-transform duration-300 bg-white p-2 rounded-full" />
           </Link>
         </div>
         <p className="text-gray-600">
