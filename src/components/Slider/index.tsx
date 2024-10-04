@@ -15,8 +15,6 @@ const Slider = () => {
     fetchNowPlayingMovies(8);
   }, [fetchNowPlayingMovies]);
 
-  console.log("now pLying movies", nowPlayingMovies);
-
   return (
     <>
       <div className="container mx-auto">
