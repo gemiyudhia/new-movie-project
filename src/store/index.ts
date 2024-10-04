@@ -1,2 +1,2 @@
-export * from "./movieStore"
-export * from "./seriesStore"
+export * from "./useMovieStore"
+export * from "./useSeriesStore"

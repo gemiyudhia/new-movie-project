@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import {movieStore} from "../../store/index"
+import {useMovieStore} from "../../store/index"
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -8,11 +8,11 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
 const Slider = () => {
-  const { movies, fetchMovie } = movieStore();
+  const { nowPlayingMovies, fetchNowPlayingMovies } = useMovieStore();
 
-  useEffect(() => {
-    fetchMovie("now_playing", 8);
-  }, [fetchMovie]);
+useEffect(() => {
+  fetchNowPlayingMovies(8);
+}, [fetchNowPlayingMovies]);
 
   return (
     <>
@@ -32,12 +32,12 @@ const Slider = () => {
           navigation={true}
           spaceBetween={30}
           slidesPerView={1}
-          loop={movies.length > 1}
+          loop={nowPlayingMovies.length > 1}
           onSlideChange={() => {}}
           onSwiper={() => {}}
           className="md:rounded-lg h-[86vh] md:h-[75vh]"
         >
-          {movies.map((movie) => (
+          {nowPlayingMovies.map((movie) => (
             <SwiperSlide key={movie.id} className="h-full md:rounded-lg">
               <img
                 src={

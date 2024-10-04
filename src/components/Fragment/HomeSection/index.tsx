@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { movieStore, seriesStore } from "../../../store/index";
+import { useMovieStore, useSeriesStore } from "../../../store/index";
 
 const HomeSection = () => {
-  const { movies, fetchMovie } = movieStore();
-  const { series, fetchSeries } = seriesStore();
+  const {popularSeries, fetchPopularSeries} = useSeriesStore();
+  const { popularMovies, fetchPopularMovies } = useMovieStore();
   useEffect(() => {
-    fetchMovie("popular", 6);
-    fetchSeries("popular", 6);
-  }, [fetchMovie, fetchSeries]);
+    fetchPopularMovies(6);
+    fetchPopularSeries(6);
+  }, [fetchPopularMovies, fetchPopularSeries]);
 
   return (
     <section className="container mx-auto mt-8">
@@ -23,7 +23,7 @@ const HomeSection = () => {
         </Link>
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-        {movies.map((movie) => (
+        {popularMovies.map((movie) => (
           <div key={movie.id}>
             <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
               <img
@@ -66,7 +66,7 @@ const HomeSection = () => {
         </Link>
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-        {series.map((serie) => (
+        {popularSeries.map((serie) => (
           <div key={serie.id}>
             <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
               <img
