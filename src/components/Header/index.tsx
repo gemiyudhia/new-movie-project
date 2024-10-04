@@ -29,7 +29,7 @@ const navMenu = () => {
         { name: "Airing Today", link: "/tv/airing_today" },
         { name: "On The Air", link: "/tv/on_the_air" },
         { name: "Popular Series", link: "/tv/popular_series" },
-        { name: "Top Rated Series", link: "/tv/top_rated/series" },
+        { name: "Top Rated Series", link: "/tv/top_rated_series" },
       ],
     },
   ];
