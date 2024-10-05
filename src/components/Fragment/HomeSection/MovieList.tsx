@@ -39,7 +39,7 @@ const MovieList = ({movies}:  MovieListProps) => {
                 <p className="mt-1 text-gray-500 dark:text-neutral-400">
                   Release Date : {movie.release_date}
                 </p>
-                <Button className="rounded-lg bg-sky-600 mt-4 py-3 px-6 lg:py-2 lg:px-4 lg:text-sm text-white data-[hover]:bg-sky-500 data-[active]:bg-sky-700">
+                <Button className="rounded-lg bg-blue-500 mt-4 py-3 px-6 lg:py-2 lg:px-4 lg:text-sm text-white data-[hover]:bg-blue-700 data-[active]:bg-sky-700">
                   Show Detail
                 </Button>
               </div>
