@@ -70,13 +70,13 @@ const Navbar = () => {
                 <PopoverPanel className="absolute z-10 bg-white text-slate-800 font-semibold p-4 mt-2 shadow-lg rounded-md">
                   <div className="flex flex-col w-36 gap-y-2">
                     {item.submenu.map((subItem, subIndex) => (
-                      <a
+                      <Link
                         key={subIndex}
-                        href={subItem.link}
+                        to={subItem.link}
                         className="hover:underline mb-1 text-sm"
                       >
                         {subItem.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </PopoverPanel>

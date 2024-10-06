@@ -67,13 +67,13 @@ const MenuMobile = ({ isOpen }: MenuMobileProps) => {
               <PopoverPanel className="absolute z-10 bg-white p-4 mt-2 shadow-lg rounded-md text-slate-800 font-semibold">
                 <div className="flex flex-col w-36 gap-y-2">
                   {item.submenu.map((subItem, subIndex) => (
-                    <a
+                    <Link
                       key={subIndex}
-                      href={subItem.link}
+                      to={subItem.link}
                       className="hover:underline mb-1 text-sm"
                     >
                       {subItem.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </PopoverPanel>
