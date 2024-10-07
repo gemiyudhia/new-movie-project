@@ -1,56 +1,67 @@
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import { Movie } from "../../types/movie";
+import { Content } from "../../types";
 
 type ModalProps = {
   isOpen: boolean;
   handleCloseDetail: () => void;
-  selectedMovie: Movie;
+  selectedItem: Content | null;
 };
 
-const Modal = ({ selectedMovie, isOpen, handleCloseDetail }: ModalProps) => {
+const Modal = ({ selectedItem, isOpen, handleCloseDetail }: ModalProps) => {
+  if (!selectedItem) return null;
+
   return (
     <Dialog
       open={isOpen}
       as="div"
-      className="relative z-30 focus:outline-none"
-      onClose={close}
+      className="relative z-30"
+      onClose={handleCloseDetail} // Perbaiki referensi ke handleCloseDetail
     >
+      <div
+        className="fixed inset-0 bg-black/30 backdrop-blur-sm"
+        aria-hidden="true"
+      />
       <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
-          <DialogPanel
-            transition
-            className="w-full md:flex md:max-w-lg lg:max-w-xl rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
-          >
+          <DialogPanel className="w-full md:flex md:max-w-lg lg:max-w-xl rounded-xl bg-white/5 p-6 backdrop-blur-2xl transform transition-all ease-out duration-300 scale-100">
             <div className="flex flex-col md:flex-row items-center gap-4">
-              <DialogTitle className="text-base/7 font-medium text-white rounded-lg">
-                <img
-                  src={
-                    selectedMovie.poster_path &&
-                    `${import.meta.env.VITE_REACT_BASE_IMAGE_URL}/${
-                      selectedMovie.poster_path
-                    }`
-                  }
-                  alt={selectedMovie.title}
-                  className="h-auto w-full object-cover rounded-xl shadow-lg md:w-48"
-                />
-              </DialogTitle>
+              {/* Ganti img keluar dari DialogTitle */}
+              <img
+                src={
+                  selectedItem.poster_path &&
+                  `${import.meta.env.VITE_REACT_BASE_IMAGE_URL}/${
+                    selectedItem.poster_path
+                  }`
+                }
+                alt={
+                  "title" in selectedItem
+                    ? selectedItem.title
+                    : selectedItem.name
+                }
+                className="h-auto w-full object-cover rounded-xl shadow-lg md:w-48"
+              />
+
               <div className="md:mx-3">
                 <DialogTitle
                   as="h3"
                   className="text-lg font-bold text-white mt-3"
                 >
-                  {selectedMovie.title}
+                  {"title" in selectedItem
+                    ? selectedItem.title
+                    : selectedItem.name}
                 </DialogTitle>
-                <DialogTitle className="text-sm font-medium text-gray-300">
-                  {selectedMovie.release_date}
-                </DialogTitle>
-                <p className="mt-2 text-sm/6 text-white/50 md:w-52 text-justify">
-                  {selectedMovie.overview}
+                <p className="text-sm font-medium text-gray-300">
+                  {"release_date" in selectedItem
+                    ? selectedItem.release_date
+                    : selectedItem.first_air_date}
+                </p>
+                <p className="mt-2 text-sm text-white/50 md:w-52 text-justify">
+                  {selectedItem.overview}
                 </p>
                 <div className="mt-4">
                   <Button
-                    className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-4 py-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-600 focus:outline-1 focus:outline-white"
-                    onClick={() => handleCloseDetail()}
+                    className="inline-flex items-center gap-2 rounded-md bg-gray-700 lg:py-1.5 lg:px-3 px-4 py-3 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-600"
+                    onClick={handleCloseDetail} // Gunakan handleCloseDetail langsung
                   >
                     Close
                   </Button>
