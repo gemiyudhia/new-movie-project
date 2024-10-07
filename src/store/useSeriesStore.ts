@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { TvSeries } from "../types/tvSeries";
+import { TvSeries } from "../types";
 import axios from "axios";
 
 type tvSeriesState = {
