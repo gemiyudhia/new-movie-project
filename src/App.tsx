@@ -21,7 +21,7 @@ const Layout = () => {
       <Footer />
     </>
   );
-}
+};
 
 function App() {
   const router = createBrowserRouter([
@@ -40,45 +40,43 @@ function App() {
         },
         {
           path: "movies",
-          children: [
-            {
-              path: "now_playing",
-              element: <NowPlayingMovies />,
-            },
-            {
-              path: "popular_movies",
-              element: <PopularMovies />,
-            },
-            {
-              path: "upcoming_movies",
-              element: <UpComingMovies />,
-            },
-            {
-              path: "top_rated_movies",
-              element: <TopRatedMovies />,
-            },
-          ],
+          element: <NotFoundPage />,
+        },
+        {
+          path: "movies/now_playing",
+          element: <NowPlayingMovies />,
+        },
+        {
+          path: "movies/popular_movies",
+          element: <PopularMovies />,
+        },
+        {
+          path: "movies/upcoming_movies",
+          element: <UpComingMovies />,
+        },
+        {
+          path: "movies/top_rated_movies",
+          element: <TopRatedMovies />,
         },
         {
           path: "tv",
-          children: [
-            {
-              path: "airing_today",
-              element: <AiringToday />,
-            },
-            {
-              path: "on_the_air",
-              element: <OnTheAir />,
-            },
-            {
-              path: "popular_series",
-              element: <PopularSeries />,
-            },
-            {
-              path: "top_rated_series",
-              element: <TopRatedSeries />,
-            },
-          ],
+          element: <NotFoundPage />,
+        },
+        {
+          path: "tv/airing_today",
+          element: <AiringToday />,
+        },
+        {
+          path: "tv/on_the_air",
+          element: <OnTheAir />,
+        },
+        {
+          path: "tv/popular_series",
+          element: <PopularSeries />,
+        },
+        {
+          path: "tv/top_rated_series",
+          element: <TopRatedSeries />,
         },
       ],
     },
