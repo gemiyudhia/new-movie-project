@@ -1,6 +1,6 @@
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
-import { MagnifyingGlass } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
+import FormSearch from "./Form";
 
 type MenuMobileProps = {
   isOpen: boolean;
@@ -45,17 +45,10 @@ const MenuMobile = ({ isOpen }: MenuMobileProps) => {
           : "-translate-y-10 opacity-0 pointer-events-none"
       }`}
     >
-      <form action="" className="relative">
-        <input
-          type="text"
-          placeholder="Search Movie..."
-          className="w-full py-2 pl-10 rounded-md text-background-0 outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
-        />
-        <MagnifyingGlass
-          size={18}
-          className="absolute top-2 left-2 text-background-0"
-        />
-      </form>
+
+{/* Form Search */}
+      <FormSearch isMobile={true} />
+
       {/* Menampilkan ul sebagai block untuk tampilan mobile */}
       <ul className="block mt-4 space-y-3">
         {navMenu().map((item, index) =>

@@ -1,9 +1,9 @@
-import { MagnifyingGlass } from "@phosphor-icons/react";
 import { useState } from "react";
 import HamburgerMenu from "./HamburgerMenu";
 import MenuMobile from "./MenuMobile";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import FormSearch from "./Form";
 
 const navMenu = () => {
   return [
@@ -106,17 +106,8 @@ const Navbar = () => {
         {/* Menu saat hamburger di klik */}
         <MenuMobile isOpen={isOpen} />
 
-        <form action="" className="hidden lg:flex lg:relative">
-          <MagnifyingGlass
-            size={18}
-            className="absolute top-2 left-2 text-white"
-          />
-          <input
-            type="text"
-            placeholder="Search Movie..."
-            className="w-full py-2 pl-10 bg-transparent border-b text-white outline-none"
-          />
-        </form>
+        {/* Form Pencarian */}
+        <FormSearch />
       </div>
     </nav>
   );
