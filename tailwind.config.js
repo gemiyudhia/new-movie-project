@@ -10,8 +10,20 @@ export default {
         background: ["#16161a"],
         secondary: ["#72757e"],
       },
+      animation: {
+        shimmer: "shimer 1.5 infinite",
+      },
+      keyframes: {
+        shimmer: {
+          "0%": {
+            backgroundPosition: "-200px 0",
+          },
+          "100%": {
+            backgroundPosition: "200px 0",
+          },
+        },
+      },
     },
   },
   plugins: [],
 };
-
