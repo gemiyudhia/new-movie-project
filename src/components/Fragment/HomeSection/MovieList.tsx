@@ -1,12 +1,25 @@
+import { useState } from "react";
 import { Button } from "@headlessui/react";
 import { Link } from "react-router-dom";
-import { Movie } from "../../../types/movie";
+import { Movie } from "../../../types";
+import Modal from "../../Dialog";
 
 type MovieListProps = {
-  movies: Movie[]
-}
+  movies: Movie[];
+};
 
-const MovieList = ({movies}:  MovieListProps) => {
+const MovieList = ({ movies }: MovieListProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<Movie | null>(null);
+
+  const handleOpenDetail = (item: Movie) => {
+    setIsOpen(true);
+    setSelectedItem(item);
+  };
+
+  const handleCloseDetail = () => {
+    setIsOpen(false);
+  };
   return (
     <>
       <div className="flex justify-between items-center mb-3 ">
@@ -39,7 +52,10 @@ const MovieList = ({movies}:  MovieListProps) => {
                 <p className="mt-1 text-gray-500 dark:text-neutral-400">
                   Release Date : {movie.release_date}
                 </p>
-                <Button className="rounded-lg bg-blue-500 mt-4 py-3 px-6 lg:py-2 lg:px-4 lg:text-sm text-white data-[hover]:bg-blue-700 data-[active]:bg-sky-700">
+                <Button
+                  onClick={() => handleOpenDetail(movie)}
+                  className="rounded-lg bg-blue-500 mt-4 py-3 px-6 lg:py-2 lg:px-4 lg:text-sm text-white data-[hover]:bg-blue-700 data-[active]:bg-sky-700"
+                >
                   Show Detail
                 </Button>
               </div>
@@ -47,8 +63,15 @@ const MovieList = ({movies}:  MovieListProps) => {
           </div>
         ))}
       </div>
+
+      {/* Dialog */}
+      <Modal
+        isOpen={isOpen}
+        selectedItem={selectedItem}
+        handleCloseDetail={handleCloseDetail}
+      />
     </>
   );
-}
+};
 
-export default MovieList
+export default MovieList;

@@ -1,12 +1,26 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { TvSeries } from "../../../types/tvSeries";
 import { Button } from "@headlessui/react";
+import { TvSeries } from "../../../types";
+import Modal from "../../Dialog";
 
 type TvSeriesProps = {
-  series: TvSeries[]
-}
+  series: TvSeries[];
+};
 
-const TvSeriesList = ({series}: TvSeriesProps) => {
+const TvSeriesList = ({ series }: TvSeriesProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<TvSeries | null>(null);
+
+  const handleOpenDetail = (item: TvSeries) => {
+    setIsOpen(true);
+    setSelectedItem(item);
+  };
+
+  const handleCloseDetail = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <div className="flex justify-between items-center mb-3 mt-12 ">
@@ -39,7 +53,10 @@ const TvSeriesList = ({series}: TvSeriesProps) => {
                 <p className="mt-1 text-gray-500 dark:text-neutral-400">
                   First Air Date : {serie.first_air_date}
                 </p>
-                <Button className="rounded-lg bg-blue-500 mt-4 py-3 px-6 lg:py-2 lg:px-4 lg:text-sm text-white data-[hover]:bg-blue-700 data-[active]:bg-sky-700">
+                <Button
+                  onClick={() => handleOpenDetail(serie)}
+                  className="rounded-lg bg-blue-500 mt-4 py-3 px-6 lg:py-2 lg:px-4 lg:text-sm text-white data-[hover]:bg-blue-700 data-[active]:bg-sky-700"
+                >
                   Show Detail
                 </Button>
               </div>
@@ -47,8 +64,15 @@ const TvSeriesList = ({series}: TvSeriesProps) => {
           </div>
         ))}
       </div>
+
+      {/* Dialog */}
+      <Modal
+        isOpen={isOpen}
+        selectedItem={selectedItem}
+        handleCloseDetail={handleCloseDetail}
+      />
     </>
   );
-}
+};
 
-export default TvSeriesList
+export default TvSeriesList;

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMovieStore } from "../../store/index";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -7,19 +7,34 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Button } from "@headlessui/react";
+import Modal from "../dialog";
+import { Movie } from "../../types";
 
 const Slider = () => {
   const { nowPlayingMovies, fetchNowPlayingMovies } = useMovieStore();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<Movie | null>(null);
 
   useEffect(() => {
     fetchNowPlayingMovies(8);
   }, [fetchNowPlayingMovies]);
 
+  const handleOpenDetail = (item: Movie) => {
+    setIsOpen(true);
+    setSelectedItem(item);
+  };
+
+  const handleCloseDetail = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <div className="container mx-auto">
         <div className="px-6 mt-8">
-          <h1 className="text-white font-bold text-3xl pb-5">Now Playing 🎬</h1>
+          <h1 className="text-white font-bold text-3xl pb-5">
+            Movie Now Playing🎬
+          </h1>
         </div>
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
@@ -55,9 +70,14 @@ const Slider = () => {
                   {movie.title}
                 </h1>
                 <p className="text-lg font-medium">{movie.release_date}</p>
-                <p className="text-sm text-slate-300 max-w-xl">{movie.overview}</p>
+                <p className="text-sm text-slate-300 max-w-xl">
+                  {movie.overview}
+                </p>
                 <div className="space-y-3">
-                  <Button className="rounded-lg bg-blue-500 mt-4 py-3 px-6 lg:py-2 lg:px-4 lg:text-sm text-white data-[hover]:bg-blue-700 data-[active]:bg-sky-700">
+                  <Button
+                    onClick={() => handleOpenDetail(movie)}
+                    className="rounded-lg bg-blue-500 mt-4 py-3 px-6 lg:py-2 lg:px-4 lg:text-sm text-white data-[hover]:bg-blue-700 data-[active]:bg-sky-700"
+                  >
                     Show Detail
                   </Button>
                 </div>
@@ -66,6 +86,13 @@ const Slider = () => {
           ))}
         </Swiper>
       </div>
+
+      {/* Dialog */}
+      <Modal
+        isOpen={isOpen}
+        selectedItem={selectedItem}
+        handleCloseDetail={handleCloseDetail}
+      />
     </>
   );
 };
