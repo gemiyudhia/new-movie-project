@@ -18,4 +18,16 @@ export type TvSeries = {
   backdrop_path: string;
 };
 
-export type Content = Movie | TvSeries;
+export type SearchState = {
+  id: number;
+  overview: string;
+  poster_path: string;
+  vote_average: number;
+  first_air_date: string;
+  backdrop_path: string;
+  release_date: string;
+  title?: string;
+  name?: string;
+};
+
+export type Content = Movie | TvSeries | SearchState;
