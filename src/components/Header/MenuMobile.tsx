@@ -4,6 +4,8 @@ import FormSearch from "./Form";
 
 type MenuMobileProps = {
   isOpen: boolean;
+  onSearch: () => void;
+  isMobile: boolean;
 };
 
 const navMenu = () => {
@@ -36,7 +38,7 @@ const navMenu = () => {
   ];
 };
 
-const MenuMobile = ({ isOpen }: MenuMobileProps) => {
+const MenuMobile = ({ isOpen, onSearch }: MenuMobileProps) => {
   return (
     <div
       className={`absolute bg-secondary-0 w-[90%] md:w-[95%] top-24 py-4 px-3 rounded-lg transition-all duration-300 ease-in-out transform lg:hidden ${
@@ -45,9 +47,8 @@ const MenuMobile = ({ isOpen }: MenuMobileProps) => {
           : "-translate-y-10 opacity-0 pointer-events-none"
       }`}
     >
-
-{/* Form Search */}
-      <FormSearch isMobile={true} />
+      {/* Form Search */}
+      <FormSearch isMobile={true} onSearch={onSearch} />
 
       {/* Menampilkan ul sebagai block untuk tampilan mobile */}
       <ul className="block mt-4 space-y-3">

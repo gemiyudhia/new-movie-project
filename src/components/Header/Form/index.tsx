@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 type FormSearchProps = {
   isMobile?: boolean;
+  onSearch: () => void
 };
 
-const FormSearch = ({ isMobile = false }: FormSearchProps) => {
+const FormSearch = ({ isMobile = false, onSearch }: FormSearchProps) => {
   const nameRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const { fetchSearchResults } = useSearchStore();
@@ -17,6 +18,8 @@ const FormSearch = ({ isMobile = false }: FormSearchProps) => {
     const searchQuery = nameRef.current?.value.trim();
 
     if (!searchQuery) return;
+
+    onSearch()
 
     fetchSearchResults(searchQuery);
     navigate(`/search?query=${searchQuery}`);

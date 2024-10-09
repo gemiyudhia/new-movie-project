@@ -49,6 +49,9 @@ const Navbar = () => {
 
   window.addEventListener("scroll", scroll);
 
+  // Function to close the hamburger menu
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <nav
       className={`container mx-auto fixed z-20 top-0 left-0 right-0 ${
@@ -104,10 +107,10 @@ const Navbar = () => {
         </div>
 
         {/* Menu saat hamburger di klik */}
-        <MenuMobile isOpen={isOpen} />
+        <MenuMobile isOpen={isOpen} isMobile={true} onSearch={closeMenu} />
 
         {/* Form Pencarian */}
-        <FormSearch />
+        <FormSearch isMobile={false} onSearch={closeMenu} />
       </div>
     </nav>
   );
