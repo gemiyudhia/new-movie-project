@@ -7,6 +7,7 @@ type tvSeriesState = {
   airingTodaySeries: TvSeries[];
   onTheAirSeries: TvSeries[];
   topRatedSeries: TvSeries[];
+  isLoading: boolean,
   fetchPopularSeries: (limit?: number) => void;
   fetchAiringTodaySeries: (limit?: number) => void;
   fetchOnTheAirSeries: (limit?: number) => void;
@@ -18,8 +19,10 @@ export const useSeriesStore = create<tvSeriesState>((set) => ({
   airingTodaySeries: [],
   onTheAirSeries: [],
   topRatedSeries: [],
+  isLoading: false,
 
   fetchPopularSeries: async (limit: number | null = null) => {
+    set({isLoading: true})
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_REACT_BASE_URL}/tv/popular?api_key=${
@@ -36,10 +39,13 @@ export const useSeriesStore = create<tvSeriesState>((set) => ({
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      set({isLoading: false})
     }
   },
 
   fetchAiringTodaySeries: async (limit: number | null = null) => {
+    set({isLoading: true})
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_REACT_BASE_URL}/tv/airing_today?api_key=${
@@ -56,10 +62,13 @@ export const useSeriesStore = create<tvSeriesState>((set) => ({
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      set({isLoading: false})
     }
   },
 
   fetchOnTheAirSeries: async (limit: number | null = null) => {
+    set({isLoading: true})
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_REACT_BASE_URL}/tv/on_the_air?api_key=${
@@ -76,10 +85,13 @@ export const useSeriesStore = create<tvSeriesState>((set) => ({
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      set({isLoading: false})
     }
   },
 
   fetchTopRatedSeries: async (limit: number | null = null) => {
+    set({ isLoading: true });
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_REACT_BASE_URL}/tv/top_rated?api_key=${
@@ -96,6 +108,8 @@ export const useSeriesStore = create<tvSeriesState>((set) => ({
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      set({isLoading: false})
     }
   },
 }));

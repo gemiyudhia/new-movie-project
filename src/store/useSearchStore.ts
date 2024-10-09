@@ -4,12 +4,15 @@ import { SearchState } from "../types";
 
 type searchResult = {
   searchResults: SearchState[],
+  isLoading: boolean,
   fetchSearchResults: (query: string) => void
 }
 
 export const useSearchStore = create<searchResult>((set) => ({
   searchResults: [],
+  isLoading: false,
   fetchSearchResults: async (query: string) => {
+    set({isLoading: true})
     try {
       const response = await axios.get(
         `${
@@ -25,6 +28,8 @@ export const useSearchStore = create<searchResult>((set) => ({
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      set({isLoading: false})
     }
   },
 }));
