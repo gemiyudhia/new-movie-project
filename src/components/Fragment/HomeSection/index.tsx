@@ -4,8 +4,8 @@ import MovieList from "./MovieList";
 import TvSeriesList from "./TvSeries";
 
 const HomeSection = () => {
-  const {popularSeries, fetchPopularSeries} = useSeriesStore();
-  const { popularMovies, fetchPopularMovies } = useMovieStore();
+  const {popularSeries, fetchPopularSeries, isLoading: isSeriesLoading} = useSeriesStore();
+  const { popularMovies, fetchPopularMovies, isLoading: isMovieLoading } = useMovieStore();
   
   useEffect(() => {
     fetchPopularMovies(6);
@@ -15,10 +15,10 @@ const HomeSection = () => {
   return (
     <section className="container mx-auto mt-8">
       {/* Movie List */}
-      <MovieList movies={popularMovies} />
+      <MovieList movies={popularMovies} isLoading={isMovieLoading} />
 
       {/* Tv Series List */}
-      <TvSeriesList series={popularSeries} />
+      <TvSeriesList series={popularSeries} isLoading={isSeriesLoading} />
     </section>
   );
 };
