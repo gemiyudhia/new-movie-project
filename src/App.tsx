@@ -11,6 +11,7 @@ import OnTheAir from "./pages/tvSeries/onTheAir";
 import PopularSeries from "./pages/tvSeries/popularSeries";
 import TopRatedSeries from "./pages/tvSeries/topRatedSeries";
 import NotFoundPage from "./pages/404";
+import SearchPage from "./pages/search/Index";
 
 // Layout untuk rute dengan Navbar dan Footer
 const Layout = () => {
@@ -77,6 +78,10 @@ function App() {
         {
           path: "tv/top_rated_series",
           element: <TopRatedSeries />,
+        },
+        {
+          path: "search",
+          element: <SearchPage />,
         },
       ],
     },
