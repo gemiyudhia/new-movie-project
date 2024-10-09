@@ -1,0 +1,30 @@
+import axios from "axios";
+import { create } from "zustand";
+import { SearchState } from "../types";
+
+type searchResult = {
+  searchResults: SearchState[],
+  fetchSearchResults: (query: string) => void
+}
+
+export const useSearchStore = create<searchResult>((set) => ({
+  searchResults: [],
+  fetchSearchResults: async (query: string) => {
+    try {
+      const response = await axios.get(
+        `${
+          import.meta.env.VITE_REACT_BASE_URL
+        }/search/movie?query=${query}&api_key=${
+          import.meta.env.VITE_REACT_API_KEY
+        }`
+      );
+
+      const data = response.data.results;
+      set({
+        searchResults: data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+}));
