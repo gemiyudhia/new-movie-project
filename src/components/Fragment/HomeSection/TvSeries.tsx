@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@headlessui/react";
 import { TvSeries } from "../../../types";
 import Modal from "../../Dialog";

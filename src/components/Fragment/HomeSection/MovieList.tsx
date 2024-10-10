@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@headlessui/react";
-import { Link } from "react-router-dom";
 import { Movie } from "../../../types";
 import Modal from "../../Dialog";
 import SkeletonComponent from "../../Skeleton";
