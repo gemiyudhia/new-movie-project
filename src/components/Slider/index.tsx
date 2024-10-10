@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMovieStore } from "../../store/index";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -10,12 +10,23 @@ import { Button } from "@headlessui/react";
 import Modal from "../Dialog";
 import { Movie } from "../../types";
 import SliderSkeleton from "../Skeleton/SliderSkeleton";
+import gsap from 'gsap'
+import {useGSAP} from '@gsap/react'
 
 const Slider = () => {
   const { nowPlayingMovies, fetchNowPlayingMovies, isLoading } =
     useMovieStore();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<Movie | null>(null);
+  const headlineRef = useRef<HTMLInputElement>(null)
+
+  useGSAP(() => {
+    gsap.fromTo(
+      headlineRef.current,
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }
+    );
+  }, [])
 
   useEffect(() => {
     fetchNowPlayingMovies(8);
@@ -33,7 +44,7 @@ const Slider = () => {
   return (
     <>
       <div className="container mx-auto">
-        <div className="px-6 mt-8">
+        <div ref={headlineRef} className="px-6 mt-8">
           <h1 className="text-white font-bold text-3xl pb-5">
             Movie Now Playing🎬
           </h1>

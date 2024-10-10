@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import HamburgerMenu from "./HamburgerMenu";
 import MenuMobile from "./MenuMobile";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import FormSearch from "./Form";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const navMenu = () => {
   return [
@@ -38,6 +40,15 @@ const navMenu = () => {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
+  const navbarRef = useRef<HTMLInputElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      navbarRef.current,
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }
+    );
+  }, []);
 
   const scroll = () => {
     if (window.scrollY >= 45) {
@@ -54,6 +65,7 @@ const Navbar = () => {
 
   return (
     <nav
+      ref={navbarRef}
       className={`container mx-auto fixed z-20 top-0 left-0 right-0 ${
         isScroll ? "backdrop-blur-md" : ""
       }`}
