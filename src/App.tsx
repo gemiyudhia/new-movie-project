@@ -24,70 +24,41 @@ const Layout = () => {
   );
 };
 
-function App() {
+const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />, // Rute dengan Navbar dan Footer
-      errorElement: <NotFoundPage />, // Untuk menangani halaman Not Found tanpa Navbar dan Footer
+      element: <Layout />,
+      errorElement: <NotFoundPage />,
       children: [
-        {
-          index: true,
-          element: <Home />,
-        },
-        {
-          path: "home",
-          element: <Home />,
-        },
+        { index: true, element: <Home /> },
+        { path: "home", element: <Home /> },
         {
           path: "movies",
-          element: <NotFoundPage />,
-        },
-        {
-          path: "movies/now_playing",
-          element: <NowPlayingMovies />,
-        },
-        {
-          path: "movies/popular_movies",
-          element: <PopularMovies />,
-        },
-        {
-          path: "movies/upcoming_movies",
-          element: <UpComingMovies />,
-        },
-        {
-          path: "movies/top_rated_movies",
-          element: <TopRatedMovies />,
+          children: [
+            { index: true, element: <NotFoundPage /> }, // Rute ini bisa diubah menjadi halaman film yang valid
+            { path: "now_playing", element: <NowPlayingMovies /> },
+            { path: "popular_movies", element: <PopularMovies /> },
+            { path: "upcoming_movies", element: <UpComingMovies /> },
+            { path: "top_rated_movies", element: <TopRatedMovies /> },
+          ],
         },
         {
           path: "tv",
-          element: <NotFoundPage />,
+          children: [
+            { index: true, element: <NotFoundPage /> }, // Rute ini bisa diubah menjadi halaman TV yang valid
+            { path: "airing_today", element: <AiringToday /> },
+            { path: "on_the_air", element: <OnTheAir /> },
+            { path: "popular_series", element: <PopularSeries /> },
+            { path: "top_rated_series", element: <TopRatedSeries /> },
+          ],
         },
-        {
-          path: "tv/airing_today",
-          element: <AiringToday />,
-        },
-        {
-          path: "tv/on_the_air",
-          element: <OnTheAir />,
-        },
-        {
-          path: "tv/popular_series",
-          element: <PopularSeries />,
-        },
-        {
-          path: "tv/top_rated_series",
-          element: <TopRatedSeries />,
-        },
-        {
-          path: "search",
-          element: <SearchPage />,
-        },
+        { path: "search", element: <SearchPage /> },
       ],
     },
   ]);
 
   return <RouterProvider router={router} />;
-}
+};
 
 export default App;
