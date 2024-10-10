@@ -43,4 +43,4 @@ npm run dev
 > Gemi Yudhia (2024)
 
 ## Demo Website
-https://movie-project-amber-rho.vercel.app/
+https://movie-project-sandy-nu.vercel.app/
