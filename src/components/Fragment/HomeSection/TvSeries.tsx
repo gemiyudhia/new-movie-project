@@ -27,12 +27,6 @@ const TvSeriesList = ({ series, isLoading }: TvSeriesProps) => {
     <>
       <div className="flex justify-between items-center mb-3 mt-12 ">
         <h1 className="font-bold text-3xl text-white px-3">Tv Series</h1>
-        <Link
-          to="/"
-          className="font-semibold text-sm text-blue-500 px-3 hover:text-white hover:underline"
-        >
-          Show More
-        </Link>
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         {isLoading
