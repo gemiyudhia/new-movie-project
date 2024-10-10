@@ -40,7 +40,7 @@ npm run dev
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ## Credit
-> Gemi Yudhia
+> Gemi Yudhia (2024)
 
 ## Demo Website
 https://movie-project-amber-rho.vercel.app/
