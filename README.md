@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Movie Search App
+This is a Movie Search Application built using React, Vite, TypeScript, Tailwind CSS, Headless UI, and GSAP for animations. The app enables users to search for movies and explore various categories, such as popular movies, top-rated movies, and more.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Movie Search: Search for movies using The Movie Database (TMDB) API.
+- Category Browsing: Browse movies by categories like Now Playing, Popular Movies, Upcoming Movies, and Movies and also includes TV Series as well.
+- Responsive Design: Fully responsive design for mobile and desktop using Tailwind CSS.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React: A JavaScript library for building user interfaces.
+- Vite: A fast development build tool optimized for modern web development.
+- TypeScript: A strongly typed programming language that builds on JavaScript, providing better tooling at any scale.
+- Tailwind CSS: A utility-first CSS framework for rapidly building custom designs.
+- Headless UI: Unstyled, fully accessible UI components for building interactive user experiences.
+- GSAP: A high-performance animation library for adding rich animations to your web apps.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation
+Clone the repository:
+```
+git clone https://github.com/gemiyudhia/new-movie-project.git
+```
+Navigate to the project directory:
+```
+cd new-movie-project
+```
+Install the dependencies:
+```
+npm install
+```
+Running The Application:
+```
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Lisence
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Credit
+> Gemi Yudhia (2024)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Demo Website
+https://movie-project-amber-rho.vercel.app/
