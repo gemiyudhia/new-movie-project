@@ -17,6 +17,7 @@ This is a Movie Search Application built using React, Vite, TypeScript, Tailwind
 - Tailwind CSS: A utility-first CSS framework for rapidly building custom designs.
 - Headless UI: Unstyled, fully accessible UI components for building interactive user experiences.
 - GSAP: A high-performance animation library for adding rich animations to your web apps.
+- Zustand: A small, fast state-management library for React.
 
 ## Installation
 Clone the repository:
